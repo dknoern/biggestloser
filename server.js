@@ -19,8 +19,7 @@ var configDB = require('./config/database.js');
 
 
 var uristring =
-    process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL ||
+    process.env.MONGODB_URI ||
     'mongodb://localhost/biggestloser';
 
 
