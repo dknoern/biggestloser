@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+    <title>Biggest Loser</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body {
+            padding-top: 80px;
+            word-wrap: break-word;
+        }
+
+
+        .table > tbody > tr > td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-users"></span> Biggest Loser</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+
+
+    <div class="row">
+
+        <!-- MY WEIGHT HISTORY -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 class="text-info"><span class="fa fa-user"></span> My Weights</h3>
+
+
+                <div>
+
+                    <%
+                    var initialWeight = 0;
+
+                    if(!hasToday){
+                    %>
+                        Enter weight for today, <%= moment().format('MMMM DD, YYYY'); %>
+
+                    <p>
+
+                    <form action="/weight" method="post">
+
+
+                        <div class="input-group">
+                            <input type="number" min="50" max="300" step=".1" class="form-control" id="weight" name="weight" placeholder="Enter weight for today...">
+                            <span class="input-group-btn">
+                               <button class="btn btn-priamary">OK</button>
+                            </span>
+                        </div>
+                    </form>
+                    </p>
+
+                    <%
+
+
+                    }
+
+                    %>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Weight</th>
+                            <th scope="col">Loss (lb)</th>
+                            <th scope="col">Loss (%)</th>
+                        </tr>
+                        </thead>
+
+                        <% for(var i = 0; i < myWeights.length; i++) { %>
+
+                        <% if (initialWeight < 1) initialWeight = myWeights[i].weight;
+
+                            var loss = initialWeight - myWeights[i].weight;
+                            var lossPercentage = loss / initialWeight;
+                        %>
+
+                        <tr>
+                            <td><%= moment(myWeights[i].date).format('MMM DD, YYYY') %> &nbsp;</td>
+                            <td> <%= myWeights[i].weight %></td>
+                            <td> <%= initialWeight - myWeights[i].weight %></td>
+                            <td> <%= (100 * lossPercentage).toFixed(1) %></td>
+                        </tr>
+
+                        <% } %>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- standings -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 class="text-danger"><span class="fa fa-users"></span> My Team</h3>
+
+                <table class="table">
+
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Initial</th>
+                        <th scope="col">Current</th>
+                        <th scope="col">Loss (lb)</th>
+                        <th scope="col">Loss (%)</th>
+                    </tr>
+                    </thead>
+
+                    <%
+                    var data = new Array();
+
+
+                    for (var key in results) {
+                        data.push(results[key]);
+                    }
+
+                    data.sort(function (a, b) {
+                        return b.lossPercentage - a.lossPercentage
+                    });
+
+                    for(var i = 0; i < data.length; i++) { %>
+
+                    <tr>
+
+
+                        <td><img src="<%= users[data[i].email]%>" width="32"/> &nbsp;<%= data[i].email %></td>
+                        <td><%= data[i].initialWeight %></td>
+                        <td><%= data[i].currentWeight %></td>
+                        <td><%= data[i].loss %></td>
+                        <td> <%= (data[i].lossPercentage).toFixed(1) %></td>
+                    </tr>
+
+                    <% } %>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <p>Powered by <a href="https://www.slalom.com">Slalom</a> PrOps Framework.</p>
+    </div>
+</div>
+
+</body>
+</html>

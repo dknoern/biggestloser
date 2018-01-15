@@ -1,0 +1,13 @@
+db.weights.drop();
+db.weights.save({email:'david@seattleweb.com',weight:239,date:new Date("2018-01-09T16:00:00Z")});
+db.weights.save({email:'david@seattleweb.com',weight:238,date:new Date("2018-01-10T16:00:00Z")});
+db.weights.save({email:'david@seattleweb.com',weight:237,date:new Date("2018-01-11T16:00:00Z")});
+db.weights.save({email:'georgeg@slalom.com',weight:216,date:new Date("2018-01-09T16:00:00Z")});
+db.weights.save({email:'georgeg@slalom.com',weight:215,date:new Date("2018-01-10T16:00:00Z")});
+db.weights.save({email:'georgeg@slalom.com',weight:217,date:new Date("2018-01-11T16:00:00Z")});
+db.weights.save({email:'nickd@slalom.com',weight:191,date:new Date("2018-01-09T16:00:00Z")});
+db.weights.save({email:'nickd@slalom.com',weight:188,date:new Date("2018-01-10T16:00:00Z")});
+db.weights.save({email:'nickd@slalom.com',weight:188,date:new Date("2018-01-11T16:00:00Z")});
+db.weights.save({email:'ella@seattleweb.com',weight:125,date:new Date("2018-01-09T16:00:00Z")});
+db.weights.save({email:'ella@seattleweb.com',weight:123,date:new Date("2018-01-10T16:00:00Z")});
+db.weights.save({email:'ella@seattleweb.com',weight:121,date:new Date("2018-01-11T16:00:00Z")});
