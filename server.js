@@ -16,8 +16,18 @@ var session      = require('express-session');
 
 var configDB = require('./config/database.js');
 
+
+
+var uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/biggestloser';
+
+
+
+
 // configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+mongoose.connect(uristring); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
 
