@@ -108,8 +108,8 @@
                     <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Initial</th>
-                        <th scope="col">Current</th>
+                        <!--th scope="col">Initial</th>
+                        <th scope="col">Current</th-->
                         <th scope="col">Loss (lb)</th>
                         <th scope="col">Loss (%)</th>
                     </tr>
@@ -133,8 +133,8 @@
 
 
                         <td><img src="<%= users[data[i].email]%>" width="32"/> &nbsp;<%= data[i].email %></td>
-                        <td><%= data[i].initialWeight %></td>
-                        <td><%= data[i].currentWeight %></td>
+                        <!--td><%= data[i].initialWeight %></td>
+                        <td><%= data[i].currentWeight %></td-->
                         <td><%= data[i].loss %></td>
                         <td> <%= (data[i].lossPercentage).toFixed(1) %></td>
                     </tr>
@@ -145,6 +145,12 @@
 
             </div>
         </div>
+    </div>
+
+
+
+    <div class="row">
+
     </div>
 
     <div class="text-center">
