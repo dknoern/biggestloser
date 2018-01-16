@@ -17,6 +17,10 @@ module.exports = function (app, passport) {
         res.render('privacy.ejs');
     });
 
+    app.get('/simple', function (req, res) {
+        res.render('simple.ejs');
+    });
+
 
 
     // PROFILE SECTION =========================
